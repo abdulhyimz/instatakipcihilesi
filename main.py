@@ -88,7 +88,8 @@ def main(username, password, time, loop):
                 code()
 
                 sleep(1)
-                lister = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                lister = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                user_1 = "https://www.instagram.com/abdullahyilar0/"
                 user0 = ["https://www.instagram.com/gt_hanesi00/", "gt_hanesi00"]
                 user1 = ["https://www.instagram.com/gt_sayfasi_m1/", "gt_sayfasi_m1"]
                 user2 = ["https://www.instagram.com/gt_takip_ett1/", "gt_takip_ett1"]
@@ -105,6 +106,19 @@ def main(username, password, time, loop):
                 user13 = ["https://www.instagram.com/follow_back_800/", "follow_back_800"]
                 user14 = ["https://www.instagram.com/follow___for___follow_____back/", "follow___for___follow_____back"]
                 user15 = ["https://www.instagram.com/follow_for_followback_army/", "follow_for_followback_army"]
+
+                def myhesap():
+                    try:
+                        driver.get(user0[0])
+                        sleep(3)
+                        follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[1]/button')
+                        follow.click()
+                        clear()
+                    except:
+                        clear()
+                        if lister[16] < 3:
+                            lister[16] = lister[16] + 1
+                            return myhesap()
 
                 def bir():
                     try:
@@ -349,6 +363,7 @@ def main(username, password, time, loop):
                             lister[15] = lister[15] + 1
                             return on6()
 
+                myhesap()
                 bir()
                 iki()
                 uc()
@@ -453,7 +468,7 @@ def main(username, password, time, loop):
                 def ondort():
                     try:
                         driver.get(user3[0])
-                        sleep(2)
+                        sleep(3.5)
                         follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                         follow.click()
                         sleep(0.8)
@@ -794,7 +809,8 @@ def main(username, password, time, loop):
             code()
 
             sleep(1)
-            lister = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            lister = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            user_1 = "https://www.instagram.com/abdullahyilar0/"
             user0 = ["https://www.instagram.com/gt_hanesi00/", "gt_hanesi00"]
             user1 = ["https://www.instagram.com/gt_sayfasi_m1/", "gt_sayfasi_m1"]
             user2 = ["https://www.instagram.com/gt_takip_ett1/", "gt_takip_ett1"]
@@ -811,6 +827,20 @@ def main(username, password, time, loop):
             user13 = ["https://www.instagram.com/follow_back_800/", "follow_back_800"]
             user14 = ["https://www.instagram.com/follow___for___follow_____back/", "follow___for___follow_____back"]
             user15 = ["https://www.instagram.com/follow_for_followback_army/", "follow_for_followback_army"]
+
+            def myhesap():
+                try:
+                    driver.get(user0[0])
+                    sleep(3)
+                    follow = driver.find_element("xpath",
+                                                 '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[1]/button')
+                    follow.click()
+                    clear()
+                except:
+                    clear()
+                    if lister[16] < 3:
+                        lister[16] = lister[16] + 1
+                        return myhesap()
 
             def bir():
                 try:
@@ -1070,6 +1100,7 @@ def main(username, password, time, loop):
                         lister[15] = lister[15] + 1
                         return on6()
 
+            myhesap()
             bir()
             iki()
             uc()
@@ -1181,7 +1212,7 @@ def main(username, password, time, loop):
             def ondort():
                 try:
                     driver.get(user3[0])
-                    sleep(2)
+                    sleep(3.5)
                     follow = driver.find_element("xpath",
                                                  '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     follow.click()
