@@ -19,5 +19,5 @@ GITHUB :ABDULHYIMZ,INSTA : ABDULLAHYILAR0
 ![](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtJ3Ll1DRXGA5Yo2ImcEbccvFkTyYc_oz8qeXr5FF_8Q&s)
 
 # Kullanımı : 
-python main.py -u instagramusername -p instagrampassword -t time
+python main.py -u instagramusername -p instagrampassword -t time -l y or n
 
