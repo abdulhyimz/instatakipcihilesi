@@ -18,7 +18,7 @@ def main(username, password, time, loop):
        GITHUB :ABDULHYIMZ,INSTA : ABDULLAHYILAR0
     Instagram geri takip hesaplarını takip ederek takipçi
     kasan python programı\n
-    Kullanımı : python main.py [-u] username [-p] password [-t] time
+    Kullanımı : python main.py [-u] username [-p] password [-t] time [-l] loop 
     --help : Yardım
     -u : Instagram kullanıcı adınız
     -p : Instagram şifreniz
@@ -400,7 +400,7 @@ def main(username, password, time, loop):
                 print("{0} saniye sonra takipten çıkarılmaya başlanacak!".format(str(tis)))
                 k += 1
                 sleep(1)
-                
+
             def onbir():
                 try:
                     driver.get(user0[0])
