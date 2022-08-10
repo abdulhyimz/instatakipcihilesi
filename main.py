@@ -35,7 +35,7 @@ def main(username, password, time, loop):
         print("-l yerine sadece y/n girilmelidir!")
         exit()
 
-    user_1 = "https://www.instagram.com/abdullahyilar/"
+    user_1 = "https://www.instagram.com/abdullahyilar0/"
     user0 = ["https://www.instagram.com/gt_hanesi00/", "gt_hanesi00"]
     user1 = ["https://www.instagram.com/gt_sayfasi_m1/", "gt_sayfasi_m1"]
     user2 = ["https://www.instagram.com/gt_takip_ett1/", "gt_takip_ett1"]
