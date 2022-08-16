@@ -8,21 +8,22 @@ import click
 
 @click.command()
 @click.option("--username", "-u", help="İnstagram kullanıcı adınız")
-@click.option("--loop", "-l", help="Sürekli devam etsin mi [Y/n]")
 @click.option("--password", "-p", help="İnstagram hesabınız şifresi")
-@click.option("--time", "-t", help="İnstagramda geri takip yapıldıktan sonra kaç saniye sonra geri takip hesaplarını takipten çıksın")
+@click.option("--wait", "-w", help="İnstagramda geri takip yapıldıktan sonra kaç saniye sonra geri takip hesaplarını takipten çıksın")
+@click.option("--loop", "-l", help="Sürekli devam etsin mi [Y/n]")
 
-def main(username, password, time, loop):
+def main(username, password, wait, loop):
+    time = wait
     if username == None or password == None or time == None or loop == None:
         print("""
        GITHUB :ABDULHYIMZ,INSTA : ABDULLAHYILAR0
     Instagram geri takip hesaplarını takip ederek takipçi
     kasan python programı\n
-    Kullanımı : python main.py [-u] username [-p] password [-t] time [-l] loop 
+    Kullanımı : python main.py [-u] username [-p] password [-w] wait [-l] loop 
     --help : Yardım
     -u : Instagram kullanıcı adınız
     -p : Instagram şifreniz
-    -t : Geri takip hesaplarını takip ettikten kaç saniye sonra takipten çıksın
+    -w : Geri takip hesaplarını takip ettikten kaç saniye sonra takipten çıksın
     -l : Sürekli tekrarlansın mı? [Y/n]
                 """)
         exit()
@@ -35,7 +36,7 @@ def main(username, password, time, loop):
         print("-l yerine sadece y/n girilmelidir!")
         exit()
 
-    user_1 = "https://www.instagram.com/abdullahyilar0/"
+    user_1 = "https://www.instagram.com/abdullahyilar/"
     user0 = ["https://www.instagram.com/gt_hanesi00/", "gt_hanesi00"]
     user1 = ["https://www.instagram.com/gt_sayfasi_m1/", "gt_sayfasi_m1"]
     user2 = ["https://www.instagram.com/gt_takip_ett1/", "gt_takip_ett1"]
@@ -77,8 +78,8 @@ def main(username, password, time, loop):
                 global driver
                 edge_options = webdriver.EdgeOptions()
                 edge_options.add_argument("-inprivate")
-                '''edge_options.add_argument('--headless')
-                edge_options.add_argument('--disable-gpu')'''
+                edge_options.add_argument('--headless')
+                edge_options.add_argument('--disable-gpu')
                 driver = webdriver.Edge(options=edge_options)
                 print(Fore.BLUE + "Tarayıcı başlatıldı!")
             except Exception as ex:
@@ -114,6 +115,7 @@ def main(username, password, time, loop):
 
             sleep(1)
             lister = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            wait = 3
 
             def myhesap():
                 try:
@@ -313,7 +315,7 @@ def main(username, password, time, loop):
                 try:
                     driver.get(user12[0])
                     sleep(2)
-                    follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[1]/button')
+                    follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     clear()
                     print(Fore.GREEN + "13. hesap takip edildi" + " :", user12[1])
@@ -390,6 +392,7 @@ def main(username, password, time, loop):
 
         def unfollower():
             find()
+            wait2 = 1.5
             sleep(1)
             liste = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
@@ -404,13 +407,16 @@ def main(username, password, time, loop):
             def onbir():
                 try:
                     driver.get(user0[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     print(Fore.GREEN + "1. hesap takipten çıkıldı" + " :", user0[1])
+
                 except:
                     print(Fore.RED + "1. hesap takipten çıkarılamadı")
                     if liste[0] < 3:
@@ -421,14 +427,17 @@ def main(username, password, time, loop):
             def oniki():
                 try:
                     driver.get(user1[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "2. hesap takipten çıkıldı" + " :", user1[1])
+
                 except:
                     print(Fore.RED + "2. hesap takipten çıkarılamadı")
                     if liste[1] < 3:
@@ -441,12 +450,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user2[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "3. hesap takipten çıkıldı" + " :", user2[1])
                 except:
@@ -460,12 +471,14 @@ def main(username, password, time, loop):
             def ondort():
                 try:
                     driver.get(user3[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "4. hesap takipten çıkıldı" + " :", user3[1])
                 except:
@@ -480,12 +493,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user4[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "5. hesap takipten çıkıldı" + " :", user4[1])
                 except:
@@ -500,12 +515,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user5[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "6. hesap takipten çıkıldı" + " :", user5[1])
                 except:
@@ -520,12 +537,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user6[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "7. hesap takipten çıkıldı" + " :", user6[1])
                 except:
@@ -540,12 +559,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user7[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "8. hesap takipten çıkıldı" + " :", user7[1])
                 except:
@@ -560,12 +581,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user8[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "9. hesap takipten çıkıldı" + " :", user8[1])
                 except:
@@ -580,12 +603,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user9[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "10. hesap takipten çıkıldı" + " :", user9[1])
                 except:
@@ -599,12 +624,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user10[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "11. hesap takipten çıkıldı" + " :", user10[1])
                 except:
@@ -619,12 +646,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user11[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "12. hesap takipten çıkıldı" + " :", user11[1])
                 except:
@@ -639,12 +668,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user9[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "13. hesap takipten çıkıldı" + " :", user9[12])
                 except:
@@ -659,12 +690,14 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user13[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "14. hesap takipten çıkıldı" + " :", user13[1])
                 except:
@@ -679,14 +712,18 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user14[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "15. hesap takipten çıkıldı" + " :", user14[1])
+                    sleep(1)
+
                 except:
                     print(Fore.RED + "15. hesap takipten çıkarılamadı")
                     if liste[14] < 3:
@@ -700,14 +737,18 @@ def main(username, password, time, loop):
 
                 try:
                     driver.get(user15[0])
-                    sleep(4)
+                    sleep(wait)
                     follow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[1]/div/div/div/div[1]/div[1]/section/main/div/header/section/div[1]/div[1]/div/div[2]/button')
                     follow.click()
                     sleep(1)
                     unfollow = driver.find_element("xpath", '/html/body/div[1]/div/div/div/div[2]/div/div/div[1]/div/div[2]/div/div/div/div/div/div/div/div[3]/button[1]')
                     unfollow.click()
+                    sleep(wait2)
+
                     clear()
                     print(Fore.GREEN + "16. hesap takipten çıkıldı" + " :", user15[1])
+                    sleep(1)
+
                 except:
                     print(Fore.RED + "16. hesap takipten çıkarılamadı")
                     if liste[15] < 3:
